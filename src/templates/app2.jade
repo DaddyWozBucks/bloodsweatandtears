@@ -1,0 +1,29 @@
+div(layout-fill layout="column")
+
+	div.blog_header(flex="none" layout="row" layout-align="center center")
+		div(flex="15"  layout="row" layout-align="center center")
+			md-button(ui-sref="app.blog" ng-show="currentState == 'app.main'") Blog
+			i.material-icons(ui-sref="app.blog" ng-show="currentState == 'app.post'") chevron_left
+			i.material-icons(ui-sref="app.main" ng-show="currentState == 'app.blog'") home
+		div(flex="70"  layout="row" layout-align="center center")
+			h1.center.nocifer.nom(flex="none" ) Blood Sweat & Tears
+		div(flex="15"  layout="row" layout-align="center center")
+			md-button.md-icon-button(ng-click="signOut()" ng-show="auth")
+				i.material-icons() exit_to_app
+	div.uibox(flex ui-view="main")
+div.alert(flex="none" ng-if="alertBool")
+	div(layout-fill layout="row")
+		md-grid-list( flex="100"
+			md-row-height='1:1',
+			md-cols-xs="10"
+			md-cols-sm="16"
+			md-cols-gt-sm="20" 
+			md-gutter='{{alertGutter}}', 
+			)
+				md-grid-tile(ng-repeat="t in tiles")
+					div.a_tile(layout-fill )
+	div.alert_text.white.ps2p(flex="none" layout="row" layout-wrap layout-align="center center")
+		div(flex="100" layout="row" layout-align="center center")
+			h1.nom.center(flex="none") {{alertTitle}}
+		div(flex="100" layout="row" layout-align="center center")
+			h3.nom.center(flex="none" flex-xs="80") {{alertText}}

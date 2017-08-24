@@ -1,0 +1,19 @@
+div(flex="100" layout="row" layout-wrap layout-align="center start")
+  div(flex="100" flex-gt-sm="75" layout="row" layout-wrap layout-align="center start")
+    div.post(md-whiteframe="3" flex="90" layout="row" layout-wrap layout-align="center start" ng-repeat="post in posts")
+      div.post_banner(flex="none" layout="column"   ng-style="{'background-image': 'url(' + post.banner + ')'}" ng-mouseenter="hoverObj[post.$id] = !hoverObj[post.$id]" ng-mouseleave="hoverObj[post.$id] = !hoverObj[post.$id]")
+        div.post_title(flex="60" layout="row" layout-align="center center" ng-show="!hoverObj[post.$id]")
+          h1.racing(flex="none") {{post.title}}
+        div.post_snippet(flex="40" layout="row" layout-align="center end" ng-show="!hoverObj[post.$id]")
+        
+          div(flex="20" layout="row" layout-align="center center")
+            h4.ps2p.hvr-pulse-grow(flex="none" ui-sref="app.post({id: post.$id})") Read
+        div.hover_preview(flex="none" layout="column" layout-align="start center" ng-show="hoverObj[post.$id]")
+          h1.racing.center(flex="15") {{post.title}}
+          div.preview_snippet(flex="85" layout="row" layout-align="none start")
+            p(flex="70" flex-offset="15") {{post.body[0].text | limitTo:250}}
+            div.preview_btn(flex="15" layout="row" layout-align="center end")
+              h4.ps2p.hvr-pulse-grow(flex="none" ui-sref="app.post({id: post.$id})") Read
+  div(flex="100" flex-gt-sm="25" layout="row" layout-wrap layout-align="center start")
+    div.twitter(flex="100" layout="row" layout-wrap layout-align="center start")
+      a(class="twitter-timeline" href="https://twitter.com/capeverne") Tweets by capeverne

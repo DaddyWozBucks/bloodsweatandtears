@@ -1,0 +1,173 @@
+
+<div flex="100" layout="row" layout-align="center start" layout-wrap="layout-wrap">
+  <div flex="100" layout="row" layout-align="center center" layout-wrap="layout-wrap" ng-style="{'background-image': 'url(' + titleBg + ')'}" ng-class="{'start_view': startView}" class="title">
+    <div flex="100" flex-gt-sm="none" layout="row" layout-align="center center" class="title_text">
+      <h2 flex="none" class="nom blood">BLOOD</h2>
+    </div>
+    <div flex="100" flex-gt-sm="none" layout="row" layout-wrap="layout-wrap" layout-align="center center" class="title_text">
+      <h2 flex="none" class="nom sweat">SWEAT</h2>
+    </div>
+    <div flex="100" flex-gt-sm="none" layout="row" layout-align="center center" class="title_text">
+      <h2 flex="none" class="nom tears">TEARS</h2>
+    </div>
+    <div flex="100" layout="row" layout-align="center center" class="title_dev">
+      <h4 flex="none" class="nom">DEVELOPMENT</h4>
+    </div>
+    <div flex="none" layout="row" layout-align="center" ng-class="{'hidden':!startView}" class="p_start">
+      <md-button ng-click="startGame()">Player 1 Press Start	</md-button>
+    </div>
+  </div>
+  <div flex="100" layout="row" layout-wrap="layout-wrap" flex-gt-sm="80" class="mc">
+    <div flex="100" layout="row" layout-wrap="layout-wrap" layout-align="center center" class="mc">
+      <div id="start" flex="100" layout="row" layout-wrap="layout-wrap" layout-align="center center" class="mc racing">
+        <h2 flex="none" hide-xs="hide-xs" class="nom">Welcome to Blood Sweat & Tears Development</h2>
+        <h3 flex="100" hide-gt-xs="hide-gt-xs" class="nom center">Welcome to </h3>
+        <h2 flex="100" hide-gt-xs="hide-gt-xs" class="center nom">Blood Sweat & Tears </h2>
+        <h3 flex="100" hide-gt-xs="hide-gt-xs" class="nom center">Development</h3>
+      </div>
+      <div flex="100" layout="row" layout-wrap="layout-wrap" layout-align="center center" class="mc noto">
+        <p flex="90" md-margin="md-margin" class="nom">The world is changing faster than ever and every day new amazing ways to reach people become available to us developers. So we formed BS&T to help people bring their passions into the digital age. No matter what sector your business runs in or what experimental performance art you've been working on - technology can be brought to bear to add the 'Oh Shit, thats cool!' to the situation.</p>
+      </div>
+    </div>
+    <div flex="100" layout="row" layout-wrap="layout-wrap" layout-align="center center" style="overflow-x:none;" class="mc">
+      <div flex="100" layout="row" layout-align="center center">
+        <h2 flex="none" class="ps2p">Services</h2>
+      </div>
+      <div flex="100" layout="row" layout-wrap="layout-wrap" layout-align="center center" class="mc">
+        <div flex="100" layout="row" layout-wrap="layout-wrap" layout-align="center center" ng-repeat="service in services" class="service">
+          <div flex="100" flex-gt-sm="25" ng-show="$index % 2 == 0 || !mQ('gt-sm')" layout="row" layout-wrap="layout-wrap" layout-align="center center" class="li_gif">
+            <div ng-style="{'background-image': 'url(' + service.gif + ')'}" class="circle"></div>
+          </div>
+          <div flex="100" flex-gt-sm="75" layout="row" layout-wrap="layout-wrap" layout-align="center center" class="li_list noto">
+            <div flex="100" layout="row" layout-wrap="layout-wrap" layout-align="center center" class="mc">
+              <h1 flex="none" ng-show="service.title.length &lt; 18" class="nom racing">{{service.title}}</h1>
+              <h2 flex="none" ng-show="service.title.length &gt;= 18" class="nom racing">{{service.title}}</h2>
+            </div>
+            <div flex="100" layout="row" layout-wrap="layout-wrap" layout-align="center center" class="mc">
+              <md-list flex="100">
+                <md-list-item ng-repeat="t in service.text">
+                  <div layout-fill="layout-fill" layout="row" layout-align="start center">
+                    <p flex="none" class="nom">{{t| fullstop}}</p>
+                  </div>
+                </md-list-item>
+              </md-list>
+            </div>
+          </div>
+          <div flex="100" flex-gt-sm="25" ng-show="$index % 2 != 0 &amp;&amp; mQ('gt-sm')" layout="row" layout-wrap="layout-wrap" layout-align="center center" class="li_gif">
+            <div ng-style="{'background-image': 'url(' + service.gif + ')'}" class="circle"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div flex="100" layout="row" layout-wrap="layout-wrap" layout-align="center center" class="mc">
+      <div flex="100" layout="row" layout-wrap="layout-wrap" layout-align="center center" class="mc">
+        <h3 flex="none">Suggested </h3>
+      </div>
+      <div hide-sm="hide-sm" hide-xs="hide-xs" flex="100" layout="row" layout-wrap="layout-wrap" layout-align="center center" class="mc sw_bar">
+        <div flex="15" flex-gt-sm="none" layout="row" layout-wrap="layout-wrap" layout-align="center center" class="mc">
+          <md-button ng-click="setView('bar')">
+            <h4 flex="none" class="nom">Bar</h4>
+          </md-button>
+        </div>
+        <div flex="15" flex-gt-sm="none" layout="row" layout-wrap="layout-wrap" layout-align="center center" class="mc">
+          <md-button ng-click="setView('store')">
+            <h4 flex="none" class="nom">Store</h4>
+          </md-button>
+        </div>
+        <div flex="20" flex-gt-sm="none" layout="row" layout-wrap="layout-wrap" layout-align="center center" class="mc">
+          <md-button ng-click="setView('artist')">
+            <h4 flex="none" class="nom">Artist</h4>
+          </md-button>
+        </div>
+        <div flex="25" flex-gt-sm="none" layout="row" layout-wrap="layout-wrap" layout-align="center center" class="mc">
+          <md-button ng-click="setView('startup')">
+            <h4 flex="none" class="nom">Prototype</h4>
+          </md-button>
+        </div>
+        <div flex="25" flex-gt-sm="none" layout="row" layout-wrap="layout-wrap" layout-align="center center" class="mc">
+          <md-button ng-click="setView('restaurant')">
+            <h4 flex="none" class="nom">Restaurant</h4>
+          </md-button>
+        </div>
+      </div>
+      <div flex="100" layout="row" layout-wrap="layout-wrap" layout-align="center center" hide-gt-sm="hide-gt-sm" class="mc sw_bar">
+        <h4 flex="100" class="nom ps2p center">I am a ...</h4>
+        <md-select flex="80" ng-model="currView">
+          <md-option ng-value="vert" ng-repeat="vert in verticals" class="center">{{vert | capitalise}}</md-option>
+        </md-select>
+      </div>
+      <div flex="100" layout="row" layout-wrap="layout-wrap" layout-align="center center" class="mc">
+        <div flex="100" layout="row" layout-wrap="layout-wrap" layout-align="center center" ng-repeat="imp in content[currView].implementations" class="mc">
+          <div flex="100" flex-gt-sm="25" ng-show="$index % 2 == 0 || !mQ('gt-sm')" layout="row" layout-wrap="layout-wrap" layout-align="center center" class="li_gif">
+            <div ng-style="{'background-image': 'url(' + imp.gif + ')'}" class="circle"></div>
+          </div>
+          <div flex="100" flex-gt-sm="75" layout="row" layout-wrap="layout-wrap" layout-align="center center" class="li_list noto">
+            <div flex="100" layout="row" layout-wrap="layout-wrap" layout-align="center center" class="mc">
+              <h1 flex="none" ng-show="imp.title.length &lt; 18" class="nom racing">{{imp.title}}</h1>
+              <h2 flex="none" ng-show="imp.title.length &gt;= 18" class="nom racing">{{imp.title}}</h2>
+            </div>
+            <div flex="100" layout="row" layout-wrap="layout-wrap" layout-align="center center" class="mc">
+              <md-list flex="100">
+                <md-list-item ng-repeat="t in imp.text">
+                  <div layout-fill="layout-fill" layout="row" layout-align="start center">
+                    <p flex="none" class="nom">{{t | fullstop}}</p>
+                  </div>
+                </md-list-item>
+              </md-list>
+            </div>
+          </div>
+          <div flex="100" flex-gt-sm="25" ng-show="$index % 2 != 0 &amp;&amp; mQ('gt-sm')" layout="row" layout-wrap="layout-wrap" layout-align="center center" class="li_gif">
+            <div ng-style="{'background-image': 'url(' + imp.gif + ')'}" class="circle"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div flex="100" layout="row" layout-wrap="layout-wrap" layout-align="center center" style="overflow-x:none;" class="mc">
+      <div flex="100" layout="row" layout-align="center center">
+        <h2 flex="none" class="ps2p">Our ToolBox</h2>
+      </div>
+      <md-content flex="100" layout="row">
+        <div flex="none" layout="row" class="slider">
+          <div flex="none" ng-repeat="skill in skills" layout="row" layout-align="center center" class="skill"><img flex="90" style="height:auto;" ng-src="{{skill.img}}"/></div>
+          <div flex="none" ng-repeat="skill in skills" layout="row" layout-align="center center" class="skill"><img flex="90" style="height:auto;" ng-src="{{skill.img}}"/>
+          </div>
+        </div>
+      </md-content>
+    </div>
+    <div flex="100" layout="row" layout-wrap="layout-wrap" layout-align="center center" style="overflow-x:none;" class="mc">
+      <div flex="90" flex-gt-sm="60" layout="row" layout-wrap="layout-wrap">
+        <div flex="100" layout="row" layout-align="center center">
+          <h2 flex="100" hide-xs="hide-xs" class="ps2p center">Get in touch!</h2>
+          <h3 flex="100" hide-gt-xs="hide-gt-xs" class="ps2p center">Get in touch!</h3>
+        </div>
+        <div flex="100" layout="row" layout-align="center center">
+          <md-input-container flex="100">
+            <label>Name</label>
+            <input type="text" ng-model="enq.name"/>
+          </md-input-container>
+        </div>
+        <div flex="100" layout="row" layout-align="center center">
+          <md-input-container flex="100">
+            <label>Company</label>
+            <input type="text" ng-model="enq.company"/>
+          </md-input-container>
+        </div>
+        <div flex="100" layout="row" layout-align="center center">
+          <md-input-container flex="100">
+            <label>Email</label>
+            <input type="email" ng-model="enq.email"/>
+          </md-input-container>
+        </div>
+        <div flex="100" layout="row" layout-align="center center">
+          <md-input-container flex="100">
+            <label>Project</label>
+            <textarea rows="6" placeholder="Briefly describe what your project requirements are" ng-model="enq.text"></textarea>
+          </md-input-container>
+        </div>
+        <div flex="100" layout="row" layout-align="center center">
+          <md-button ng-click="submitEnq()" class="submit">Submit</md-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

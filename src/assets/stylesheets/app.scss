@@ -1,0 +1,439 @@
+@import url('https://fonts.googleapis.com/css?family=Nosifer|Noto+Sans|Press+Start+2P|Racing+Sans+One');
+.nom{
+  margin: 1%;
+}
+.nocifer{
+ font-family: 'Nosifer', cursive;
+}
+
+.ps2p{
+  font-family: 'Press Start 2P', cursive;
+}
+.racing{
+  font-family: 'Racing Sans One', cursive;
+}
+.noto{
+  font-family: 'Noto Sans', sans-serif;
+}
+.white{
+  color: whitesmoke;
+}
+.center{
+  text-align: center;
+}
+.amp{
+  position: absolute;
+  right: -50%;
+}
+.li_gif{
+  .circle{
+    border-radius: 50%;
+    height: 200px;
+    width: 200px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+.liked{
+  color: red;
+}
+.slider{
+  width: -webkit-max-content;
+}
+.sharebox{
+  font-family: 'Racing Sans One', cursive;
+  font-size: 1rem;
+}
+.start_view{
+  height: calc(100% - 50px) !important;
+  @media screen and (max-width:600px){
+    height: calc(100% - 30px) !important;
+  }
+  position: fixed !important;
+  z-index: 50;
+}
+.uibox{
+  width:100%;
+  overflow-y: scroll;
+}
+.p_start{
+      animation: starter_flash 3s linear infinite;
+      font-family: 'Press Start 2P', cursive;
+      position: absolute;
+      top: calc(100% - 50px);
+    }
+.blog_header{
+  background: rgb(12,13,18);
+  color: white;
+  blur: 5px;
+  height:50px;
+  @media screen and (max-width: 600px){
+    height:30px;
+    h1{
+      font-size: 14px;
+    }
+  }
+  .blog_icon{
+    i{
+      font-size: 24px;
+    }
+  }
+}
+.twitter{
+  max-height: 500px !important;
+  overflow-x: hidden;
+}
+.hover_preview{
+  height: 100%;
+  width: 100%;
+  background: rgba(12,14,15,0.75);
+  color: white;
+  .preview_snippet{
+    height:100%;
+
+    p{
+      height: 100%;
+      overflow-y: hidden;
+      overflow-x: hidden;
+    }
+  }
+  .preview_btn{
+    height: 100%;
+  }
+}
+.facebook{
+  background-image: url('../images/fbooklogin.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 50px;
+}
+.google{
+  background-image: url('../images/gsigninblue.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 50px;
+}
+.post{
+    margin-top: 5%;
+    .post_title{
+      width: 100%;
+      text-align:center;
+        font-family: 'Racing Sans One', cursive;
+    }
+    .post_snippet{
+      width: 100%;
+    }
+    .post_text{
+      font-family: 'Noto Sans', sans-serif;
+      margin: 5% 10%;
+      font-size:1rem;
+      line-height: 1.5;
+    }
+    .post_quote{
+      font-family: 'Racing Sans One', cursive;
+      margin: 5% 10%;
+      font-size: 2rem;
+      line-height: 2;
+      @media screen and (max-width:600px){
+        font-size: 1.2rem;
+        line-height: 1.6;
+      }
+    }
+  .post_banner{
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    @media screen and (max-width:600px){
+      height:250px;
+    }
+    @media screen and (min-width:2048px){
+      height:650px;
+    }
+    @media  (min-width:600px) and (max-width:1024px){
+      height:300px;
+    }
+    @media  (min-width:1024px) and (max-width:2048px){
+      height:350px;
+    }
+    h1, h4, p {
+      color:white;
+      text-shadow: 1px 1px 2px black;
+    }
+  }
+  .post_img{
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    @media screen and (max-width:600px){
+      height:200px;
+    }
+    @media screen and (min-width:2048px){
+      height:575px;
+    }
+    @media  (min-width:600px) and (max-width:1024px){
+      height:275px;
+    }
+    @media  (min-width:1024px) and (max-width:2048px){
+      height:300px;
+    }
+    h1, h4, p {
+      color:white;
+      text-shadow: 1px 1px 2px black;
+    }
+  }
+  .post_youtube{
+    width: 100%;
+
+
+    @media screen and (max-width:600px){
+      height:200px;
+    }
+    @media screen and (min-width:2048px){
+      height:575px;
+    }
+    @media  (min-width:600px) and (max-width:1024px){
+      height:275px;
+    }
+    @media  (min-width:1024px) and (max-width:2048px){
+      height:300px;
+    }
+
+  }
+}
+.blog_btn{
+  position: absolute;
+  top:10px;
+  left: 10px;
+  z-index: 100;
+}
+.title{
+  width: 100%;
+  position: relative;
+  height:  -webkit-max-content;
+  background: black;
+ font-family: 'Press Start 2P', cursive;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+   @media screen and (max-width: 600px) {
+     height: 90%;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    .title_dev{
+      letter-spacing: 2%;
+    }
+  .title_text{
+    position: relative;
+    font-size: 64px;
+    text-shadow: 2px 2px 3px 3px rgba(12,13,14,0.75);
+    @media screen and (max-width: 600px) {
+      font-size: 42px;
+    }
+    h2{
+      color: white;
+     // -webkit-background-clip: text;
+     // -webkit-text-fill-color: transparent;
+    }
+
+    .blood{
+        color: white;  /* Fallback: assume this color ON TOP of image */
+         //  background: url('../images/blood_3.gif') no-repeat cover;
+         animation: blood 30s linear infinite;
+         // -webkit-background-clip: text;
+         // -webkit-text-fill-color: transparent;
+    }
+    .sweat{
+        color: white;  /* Fallback: assume this color ON TOP of image */
+         //  background: url('../images/sweat_1.gif') no-repeat cover;
+         animation: sweat 30s linear infinite;
+         // -webkit-background-clip: text;
+         // -webkit-text-fill-color: transparent;
+    }
+    .tears{
+        color: white;  /* Fallback: assume this color ON TOP of image */
+         //  background: url('../images/tears_2.gif') no-repeat cover;
+         animation: tears 30s linear infinite;
+         // -webkit-background-clip: text;
+         // -webkit-text-fill-color: transparent;
+    }
+  }
+  color: whitesmoke;
+}
+.hidden{
+  display:none;
+}
+.service{
+  height: -webkit-max-content;
+  margin: 2% 1%;
+}
+.sw_bar{
+  // font-family: 'Racing Sans One', cursive;
+  font-family: 'Press Start 2P', cursive;
+  md-select{
+    md-select-value{
+      span{
+        .md-text{
+          width: 100%;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+.li_icon{
+  i{font-size: 100px;}
+}
+.window{
+  position: absolute;
+  top:0;
+  bottom:0;
+  right:0;
+  left: 0;
+  height:100%;
+  width:100%;
+  overflow-x: none;
+}
+.skill{
+  position: relative;
+  width:300px;
+    height: 300px;
+  .skill_circle{
+    width:300px;
+    height: 300px;
+    border-radius: 50%;
+    position: absolute;
+
+
+  }
+}
+.slider{
+  animation: slideshow 300s linear infinite;
+      transform: translate3d(0, 0, 0);
+}
+
+
+.scroll{
+  overflow-y: scroll;
+}
+.mc{
+  height: -webkit-max-content;
+  height: -moz-max-content;
+  height: -ie-max-content;
+  height: max-content;
+}
+ @keyframes slideshow {
+      0%    { left: 0; }
+      100%  { -webkit-transform: translateX(-100%);}
+
+    }
+ @keyframes starter_flash {
+      0%    { opacity: 0; };
+      50%  { opacity: 1};
+      100%  { opacity: 0};
+
+    }
+
+@keyframes blood {
+      0%    { color: #FFEBEE; }
+
+      5% { color: #FFCDD2;}
+      10% { color: #EF9A9A;}
+      15% { color: #E57373;}
+      20% { color: #EF5350;}
+      25% { color: #F44336;}
+      30% { color: #E53935;}
+      35% { color: #D32F2F;}
+      40% { color: #C62828;}
+      45% { color: #B71C1C;}
+       100%    { color: #FFEBEE; }
+
+      90% { color: #FFCDD2;}
+      85% { color: #EF9A9A;}
+      80% { color: #E57373;}
+      75% { color: #EF5350;}
+      70% { color: #F44336;}
+      65% { color: #E53935;}
+      60% { color: #D32F2F;}
+      55% { color: #C62828;}
+      50% { color: #B71C1C;}
+
+
+    }
+    @keyframes sweat {
+      0%    { color: #E3F2FD; }
+
+      5% { color: #BBDEFB;}
+      10% { color: #90CAF9;}
+      15% { color: #64B5F6;}
+      20% { color: #42A5F5;}
+      25% { color: #2196F3;}
+      30% { color: #1E88E5;}
+      35% { color: #1976D2;}
+      40% { color: #1565C0;}
+      45% { color: #0D47A1;}
+       100%    { color: #E3F2FD; }
+
+      90% { color: #BBDEFB;}
+      85% { color: #90CAF9;}
+      80% { color: #64B5F6;}
+      75% { color: #42A5F5;}
+      70% { color: #2196F3;}
+      65% { color: #1E88E5;}
+      60% { color: #1976D2;}
+      55% { color: #1565C0;}
+      50% { color: #0D47A1;}
+
+
+    }
+
+      @keyframes tears {
+     0%    { color: #E0F7FA}
+      5% { color: #B2EBF2}
+      10% { color: #80DEEA}
+      15% { color: #4DD0E1}
+      20% { color: #26C6DA}
+      25% { color: #00BCD4}
+      30% { color: #00ACC1}
+      35% { color: #0097A7}
+      40% { color: #00838F}
+      45% { color: #006064}
+      100%    { color: #E0F7FA}
+      95% { color: #B2EBF2}
+      90% { color: #80DEEA}
+      85% { color: #4DD0E1}
+      80% { color: #26C6DA}
+      75% { color: #00BCD4}
+      70% { color: #00ACC1}
+      65% { color: #0097A7}
+      60% { color: #00838F}
+      55% { color: #006064}
+
+
+    }
+.alert{
+  position: fixed;
+  width: 100%;
+  height:100%;
+  top:0;
+  right:0;
+  z-index: 150;
+  .alert_text{
+    position: absolute;
+    width: 100%;
+    height:100%;
+    top:0;
+    right:0;
+  }
+  .a_tile{
+    background: rgba(19,12,13,1);
+  }
+}

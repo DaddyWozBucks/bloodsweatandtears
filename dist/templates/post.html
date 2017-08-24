@@ -1,0 +1,81 @@
+
+<div flex="100" layout="row" layout-wrap="layout-wrap" layout-align="center start" class="mc">
+  <div flex="100" flex-gt-sm="80" layout="row" layout-wrap="layout-wrap" layout-align="center start">
+    <div flex="100" layout="row" layout-wrap="layout-wrap" layout-align="center start" class="post">
+      <div flex="none" layout="row" layout-align="center center" ng-style="{'background-image': 'url(' + post.banner + ')'}" class="post_banner">
+        <h1 flex="none" class="post_title">{{post.title}}</h1>
+      </div>
+      <div flex="100" layout="row" layout-wrap="layout-wrap" layout-align="center start">
+        <div flex="100" layout="row" layout-wrap="layout-wrap" layout-align="center start" ng-repeat="p in post.body">
+          <div flex="100" layout="row" layout-wrap="layout-wrap" layout-align="center start" ng-if="p.type == 'text'">
+            <p flex="100" flex-gt-sm="90" class="post_text">{{p.text}}</p>
+          </div>
+          <div flex="100" layout="row" layout-wrap="layout-wrap" layout-align="center start" ng-if="p.type == 'image'" ng-style="{'background-image': 'url(' + p.image + ')'}" class="post_img"> </div>
+          <div flex="100" layout="row" layout-wrap="layout-wrap" layout-align="center start" ng-if="p.type == 'quote'" class="post_quote"> 
+            <blockquote flex="90" flex-gt-sm="70">{{p.text}}</blockquote>
+          </div>
+          <div flex="100" layout="row" layout-wrap="layout-wrap" layout-align="center center" ng-if="p.type == 'youtube'" class="post_youtube">
+            <iframe id="ytplayer" type="text/html" width="100%" height="100%" src="{{youtubeUrl(p.url)}}" frameborder="0"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div flex="100" layout="row" layout-wrap="layout-wrap">
+      <div flex="100" layout="row" layout-align="space-around center">
+        <div flex="50" layout="row" layout-wrap="layout-wrap" layout-align="space-around center" ng-click="toggleLike()" ng-show="!shareView" class="likes">
+          <div flex="100" layout="row" layout-align="space-around center">
+            <div flex="none" layout="row" layout-align="center center"><i ng-class="{'liked': post.likes[auth.uid]}" class="material-icons">favorite</i></div>
+            <p flex="none">{{likesCount(post.likes)}} likes</p>
+          </div>
+          <div flex="100" layout="row" layout-align="center center" ng-show="post.likes[auth.uid]">
+            <p flex="none" class="noto nom">You like this</p>
+          </div>
+        </div>
+        <div flex="50" layout="row" layout-align="center center" ng-show="!shareView" class="share">
+          <md-button ng-click="shareView = !shareView" class="racing">Share</md-button>
+        </div>
+        <div flex="50" layout="row" layout-align="center center" layout-wrap="layout-wrap" ng-show="shareView" class="sharebox">
+          <div flex="50" flex-gt-sm="25" href="#" socialshare="socialshare" socialshare-provider="twitter" socialshare-text="{{post.title}}" socialshare-url="{{shareUrl}}">Twitter</div>
+          <div flex="50" flex-gt-sm="25" href="#" socialshare="socialshare" socialshare-provider="facebook" socialshare-text="{{post.title}}" socialshare-url="{{shareUrl}}">Facebook</div>
+          <div flex="50" flex-gt-sm="25" href="#" socialshare="socialshare" socialshare-provider="whatsapp" socialshare-text="{{post.title}}" socialshare-url="{{shareUrl}}">Whatsapp</div>
+          <div flex="50" flex-gt-sm="25" href="#" socialshare="socialshare" socialshare-provider="reddit" socialshare-text="{{post.title}}" socialshare-url="{{shareUrl}}">Reddit</div>
+        </div>
+      </div>
+      <div flex="100" layout="row">
+        <md-list flex="100" layout="row" layout-wrap="layout-wrap">
+          <md-list-item flex="100" ng-repeat="c in comments" class="md-2-line"><img ng-src="{{c.photo}}" alt="" class="md-avatar"/>
+            <div ng-class="{'md-offset': 5 }" class="md-list-item-text">
+              <h3>{{ c.displayName }}</h3>
+              <p>{{c.comment}}</p>
+            </div>
+            <md-button ng-click="toggleCommentLike(c)" aria-label="like" class="md-secondary md-icon-button"><i ng-class="{'liked': c.likes[auth.uid]}" class="material-icons">favorite</i></md-button>
+          </md-list-item>
+        </md-list>
+      </div>
+      <div flex="100" layout="row">
+        <div flex="100" layout="row" ng-if="auth" layout-wrap="layout-wrap" layout-align="center center">
+          <md-input-container flex="80">
+            <label>Comment</label>
+            <textarea rows="6" ng-model="newComment.comment"></textarea>
+          </md-input-container>
+          <div flex="100" layout="row" layout-wrap="layout-wrap" layout-align="center center">
+            <md-button ng-click="addComment()">Add Comment</md-button>
+          </div>
+        </div>
+        <div flex="100" layout="row" ng-if="!auth" layout-wrap="layout-wrap">
+          <div flex="100" layout="row" layout-align="center center">
+            <h2 flex="none">Please sign in to comment</h2>
+          </div>
+          <div flex="100" layout="row" layout-align="center center">
+            <div flex="100" flex-gt-sm="45" layout="row" layout-align="center" class="mc">
+              <div flex="80" ng-click="signIn('google')" class="google"></div>
+            </div>
+            <div flex="100" flex-gt-sm="45" layout="row" layout-align="center" class="mc">
+              <div flex="80" ng-click="signIn('facebook')" class="facebook"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

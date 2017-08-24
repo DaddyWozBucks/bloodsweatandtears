@@ -1,0 +1,125 @@
+div(flex="100" layout="row" layout-align="center start" layout-wrap)
+	
+	div.title(flex="100" layout="row" layout-align="center center" layout-wrap ng-style="{'background-image': 'url(' + titleBg + ')'}" ng-class="{'start_view': startView}")
+		//- div.blog_btn(flex="none")
+		//- 	md-button(ui-sref="app.blog") Blog
+		div.title_text(flex="100" flex-gt-sm="none" layout="row" layout-align="center center")
+			h2.nom.blood(flex="none") BLOOD
+		div.title_text(flex="100" flex-gt-sm="none" layout="row" layout-wrap layout-align="center center")
+			h2.nom.sweat(flex="none") SWEAT
+		
+		//- 	h1.nom.amp(flex="none" hide-xs hide-sm) &
+		//- div.title_text(flex="100" flex-gt-sm="none" hide-gt-sm layout="row" layout-wrap layout-align="center center")
+		//- 	h1.nom.amp(flex="none" ) &
+		div.title_text(flex="100" flex-gt-sm="none" layout="row" layout-align="center center")
+			h2.nom.tears(flex="none") TEARS
+		div.title_dev(flex="100" layout="row" layout-align="center center")
+			h4.nom(flex="none") DEVELOPMENT
+		div.p_start(flex="none" layout="row" layout-align="center" ng-class="{'hidden':!startView}")
+			md-button(ng-click="startGame()") Player 1 Press Start	
+	div.mc(flex="100" layout="row" layout-wrap flex-gt-sm="80")
+		div.mc(flex="100" layout="row" layout-wrap layout-align="center center")
+			div.mc.racing#start(flex="100" layout="row" layout-wrap layout-align="center center")
+				h2.nom(flex="none" hide-xs) Welcome to Blood Sweat & Tears Development
+				h3.nom.center(flex="100" hide-gt-xs) Welcome to 
+				h2.center.nom(flex="100" hide-gt-xs) Blood Sweat & Tears 
+				h3.nom.center(flex="100" hide-gt-xs) Development
+			div.mc.noto(flex="100" layout="row" layout-wrap layout-align="center center")
+				p.nom(flex="90" md-margin) The world is changing faster than ever and every day new amazing ways to reach people become available to us developers. So we formed BS&T to help people bring their passions into the digital age. No matter what sector your business runs in or what experimental performance art you've been working on - technology can be brought to bear to add the 'Oh Shit, thats cool!' to the situation.
+		div.mc(flex="100" layout="row" layout-wrap layout-align="center center" style="overflow-x:none;")
+			div(flex="100" layout="row" layout-align="center center")
+				h2.ps2p(flex="none") Services
+			div.mc(flex="100" layout="row" layout-wrap layout-align="center center")
+				div.service(flex="100" layout="row" layout-wrap layout-align="center center" ng-repeat="service in services")
+					div.li_gif(flex="100" flex-gt-sm="25" ng-show="$index % 2 == 0 || !mQ('gt-sm')" layout="row" layout-wrap layout-align="center center")
+						div.circle(ng-style="{'background-image': 'url(' + service.gif + ')'}")
+					//- div.li_icon(flex="100" flex-gt-sm="25" ng-show="$index % 2 == 0 || !mQ('gt-sm')" layout="row" layout-wrap layout-align="center center")
+					//- 	i.material-icons {{service.icon}}
+					div.li_list.noto(flex="100" flex-gt-sm="75" layout="row" layout-wrap layout-align="center center")
+						div.mc(flex="100" layout="row" layout-wrap layout-align="center center")
+							h1.nom.racing(flex="none" ng-show="service.title.length < 18") {{service.title}}
+							h2.nom.racing(flex="none" ng-show="service.title.length >= 18") {{service.title}}
+						div.mc(flex="100" layout="row" layout-wrap layout-align="center center")
+							md-list(flex="100")
+								md-list-item( ng-repeat="t in service.text")
+									div(layout-fill layout="row" layout-align="start center")
+										p.nom(flex="none") {{t| fullstop}}
+					div.li_gif(flex="100" flex-gt-sm="25" ng-show="$index % 2 != 0 && mQ('gt-sm')" layout="row" layout-wrap layout-align="center center")
+						div.circle(ng-style="{'background-image': 'url(' + service.gif + ')'}")
+		div.mc(flex="100" layout="row" layout-wrap layout-align="center center")
+
+			div.mc(flex="100" layout="row" layout-wrap layout-align="center center")
+				h3(flex="none") Suggested 
+			div.mc.sw_bar(hide-sm hide-xs flex="100" layout="row" layout-wrap layout-align="center center")
+				div.mc(flex="15" flex-gt-sm="none" layout="row" layout-wrap layout-align="center center")
+					md-button(ng-click="setView('bar')")
+						h4.nom(flex="none") Bar
+				
+				div.mc(flex="15" flex-gt-sm="none" layout="row" layout-wrap layout-align="center center")
+					md-button(ng-click="setView('store')")
+						h4.nom(flex="none") Store
+				div.mc(flex="20" flex-gt-sm="none" layout="row" layout-wrap layout-align="center center")
+					md-button(ng-click="setView('artist')")
+						h4.nom(flex="none") Artist
+				div.mc(flex="25" flex-gt-sm="none" layout="row" layout-wrap layout-align="center center")
+					md-button(ng-click="setView('startup')")
+						h4.nom(flex="none") Prototype
+				div.mc(flex="25" flex-gt-sm="none" layout="row" layout-wrap layout-align="center center")
+					md-button(ng-click="setView('restaurant')")
+						h4.nom(flex="none") Restaurant
+			div.mc.sw_bar(flex="100" layout="row" layout-wrap layout-align="center center" hide-gt-sm)
+				h4.nom.ps2p.center(flex="100") I am a ...
+				md-select(flex="80" ng-model="currView")
+					md-option.center(ng-value="vert" ng-repeat="vert in verticals") {{vert | capitalise}}
+			div.mc(flex="100" layout="row" layout-wrap layout-align="center center")
+				div.mc(flex="100" layout="row" layout-wrap layout-align="center center" ng-repeat="imp in content[currView].implementations")
+					div.li_gif(flex="100" flex-gt-sm="25" ng-show="$index % 2 == 0 || !mQ('gt-sm')" layout="row" layout-wrap layout-align="center center")
+						div.circle(ng-style="{'background-image': 'url(' + imp.gif + ')'}")
+					//- div.li_icon(flex="100" flex-gt-sm="25" ng-show="$index % 2 == 0 || !mQ('gt-sm')" layout="row" layout-wrap layout-align="center center")
+					//- 	i.material-icons {{imp.icon}}
+					div.li_list.noto(flex="100" flex-gt-sm="75" layout="row" layout-wrap layout-align="center center")
+						div.mc(flex="100" layout="row" layout-wrap layout-align="center center")
+							h1.nom.racing(flex="none" ng-show="imp.title.length < 18") {{imp.title}}
+							h2.nom.racing(flex="none" ng-show="imp.title.length >= 18") {{imp.title}}
+						div.mc(flex="100" layout="row" layout-wrap layout-align="center center")
+							md-list(flex="100")
+								md-list-item( ng-repeat="t in imp.text")
+									div(layout-fill layout="row" layout-align="start center")
+										p.nom(flex="none") {{t | fullstop}}
+					//- div.li_icon(flex="100" flex-gt-sm="25" ng-show="$index % 2 != 0 && mQ('gt-sm')" layout="row" layout-wrap layout-align="center center")
+					//- 	i.material-icons {{imp.icon}}
+					div.li_gif(flex="100" flex-gt-sm="25" ng-show="$index % 2 != 0 && mQ('gt-sm')" layout="row" layout-wrap layout-align="center center")
+						div.circle(ng-style="{'background-image': 'url(' + imp.gif + ')'}")
+		div.mc(flex="100" layout="row" layout-wrap layout-align="center center" style="overflow-x:none;")
+			div(flex="100" layout="row" layout-align="center center")
+				h2.ps2p(flex="none") Our ToolBox
+			md-content(flex="100" layout="row" )
+				div.slider(flex="none" layout="row" )
+					div.skill(flex="none"  ng-repeat="skill in skills" layout="row" layout-align="center center")
+						img(flex="90" style="height:auto;" ng-src="{{skill.img}}")
+					div.skill(flex="none"  ng-repeat="skill in skills" layout="row" layout-align="center center")
+						img(flex="90" style="height:auto;" ng-src="{{skill.img}}")
+						//- div.skill_circle(flex="none" ng-repeat="n in ten" ng-class="'skill_' + n" style="background: {{skill.colors[n-1]}}; height: {{300/5 *n}}; width: {{300/5 *n}};z-index:{{20 - n}}")
+		div.mc(flex="100" layout="row" layout-wrap layout-align="center center" style="overflow-x:none;")
+			div(flex="90" flex-gt-sm="60" layout="row" layout-wrap)
+				div(flex="100" layout="row" layout-align="center center")
+					h2.ps2p.center(flex="100" hide-xs) Get in touch!
+					h3.ps2p.center(flex="100" hide-gt-xs) Get in touch!
+				div(flex="100"  layout="row" layout-align="center center")
+					md-input-container(flex="100")
+						label Name
+						input(type="text" ng-model="enq.name")
+				div(flex="100"  layout="row" layout-align="center center")
+					md-input-container(flex="100")
+						label Company
+						input(type="text" ng-model="enq.company")
+				div(flex="100"  layout="row" layout-align="center center")
+					md-input-container(flex="100")
+						label Email
+						input(type="email" ng-model="enq.email")
+				div(flex="100"  layout="row" layout-align="center center")
+					md-input-container(flex="100")
+						label Project
+						textarea(rows="6" placeholder="Briefly describe what your project requirements are" ng-model="enq.text")
+				div(flex="100"  layout="row" layout-align="center center")
+					md-button.submit(ng-click="submitEnq()") Submit

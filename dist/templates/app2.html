@@ -1,0 +1,32 @@
+
+<div layout-fill="layout-fill" layout="column">
+  <div flex="none" layout="row" layout-align="center center" class="blog_header">
+    <div flex="15" layout="row" layout-align="center center">
+      <md-button ui-sref="app.blog" ng-show="currentState == 'app.main'">Blog</md-button><i ui-sref="app.blog" ng-show="currentState == 'app.post'" class="material-icons">chevron_left</i><i ui-sref="app.main" ng-show="currentState == 'app.blog'" class="material-icons">home</i>
+    </div>
+    <div flex="70" layout="row" layout-align="center center">
+      <h1 flex="none" class="center nocifer nom">Blood Sweat & Tears</h1>
+    </div>
+    <div flex="15" layout="row" layout-align="center center">
+      <md-button ng-click="signOut()" ng-show="auth" class="md-icon-button"><i class="material-icons">exit_to_app</i></md-button>
+    </div>
+  </div>
+  <div flex="flex" ui-view="main" class="uibox"></div>
+</div>
+<div flex="none" ng-if="alertBool" class="alert">
+  <div layout-fill="layout-fill" layout="row">
+    <md-grid-list flex="100" md-row-height="1:1" md-cols-xs="10" md-cols-sm="16" md-cols-gt-sm="20" md-gutter="{{alertGutter}}">
+      <md-grid-tile ng-repeat="t in tiles">
+        <div layout-fill="layout-fill" class="a_tile"></div>
+      </md-grid-tile>
+    </md-grid-list>
+  </div>
+  <div flex="none" layout="row" layout-wrap="layout-wrap" layout-align="center center" class="alert_text white ps2p">
+    <div flex="100" layout="row" layout-align="center center">
+      <h1 flex="none" class="nom center">{{alertTitle}}</h1>
+    </div>
+    <div flex="100" layout="row" layout-align="center center">
+      <h3 flex="none" flex-xs="80" class="nom center">{{alertText}}</h3>
+    </div>
+  </div>
+</div>

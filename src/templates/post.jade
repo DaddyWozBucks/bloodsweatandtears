@@ -1,0 +1,85 @@
+div.mc(flex="100" layout="row" layout-wrap layout-align="center start")
+  
+  div(flex="100" flex-gt-sm="80" layout="row" layout-wrap layout-align="center start")
+    div.post(flex="100" layout="row" layout-wrap layout-align="center start" )
+      div.post_banner(flex="none" layout="row" layout-align="center center" ng-style="{'background-image': 'url(' + post.banner + ')'}")
+        h1.post_title(flex="none") {{post.title}}
+      div(flex="100" layout="row" layout-wrap layout-align="center start" )
+        div(flex="100" layout="row" layout-wrap layout-align="center start" ng-repeat="p in post.body")
+          div(flex="100" layout="row" layout-wrap layout-align="center start" ng-if="p.type == 'text'")
+            p.post_text(flex="100" flex-gt-sm="90" ) {{p.text}}
+          div.post_img(flex="100" layout="row" layout-wrap layout-align="center start" ng-if="p.type == 'image'" ng-style="{'background-image': 'url(' + p.image + ')'}") 
+          div.post_quote(flex="100" layout="row" layout-wrap layout-align="center start" ng-if="p.type == 'quote'" ) 
+            blockquote(flex="90" flex-gt-sm="70") {{p.text}}
+          div.post_youtube(flex="100" layout="row" layout-wrap layout-align="center center" ng-if="p.type == 'youtube'" )
+            iframe(id="ytplayer" type="text/html" width="100%" height="100%"
+                src="{{youtubeUrl(p.url)}}"
+                frameborder="0")
+    div(flex="100" layout="row" layout-wrap)
+      div(flex="100" layout="row" layout-align="space-around center")
+        div.likes(flex="50"  layout="row" layout-wrap layout-align="space-around center" ng-click="toggleLike()" ng-show="!shareView")
+          div(flex="100" layout="row" layout-align="space-around center")
+            div(flex="none" layout="row" layout-align="center center")
+              i.material-icons( ng-class="{'liked': post.likes[auth.uid]}") favorite
+            p(flex="none") {{likesCount(post.likes)}} likes
+          div(flex="100" layout="row" layout-align="center center" ng-show="post.likes[auth.uid]")
+            p.noto.nom(flex="none") You like this
+        div.share(flex="50"  layout="row" layout-align="center center"  ng-show="!shareView")
+          md-button.racing(ng-click="shareView = !shareView" ) Share
+        div.sharebox(flex="50"  layout="row" layout-align="center center" layout-wrap ng-show="shareView")
+            div(flex="50" flex-gt-sm="25" href="#"
+            socialshare
+            socialshare-provider="twitter"
+            socialshare-text="{{post.title}}"
+            socialshare-url="{{shareUrl}}") Twitter
+            div(flex="50" flex-gt-sm="25" href="#"
+            socialshare
+            socialshare-provider="facebook"
+            socialshare-text="{{post.title}}"
+            socialshare-url="{{shareUrl}}") Facebook
+            div(flex="50" flex-gt-sm="25" href="#"
+            socialshare
+            socialshare-provider="whatsapp"
+            socialshare-text="{{post.title}}"
+            socialshare-url="{{shareUrl}}") Whatsapp
+            div(flex="50" flex-gt-sm="25" href="#"
+            socialshare
+            socialshare-provider="reddit"
+            socialshare-text="{{post.title}}"
+            socialshare-url="{{shareUrl}}") Reddit
+      div(flex="100" layout="row" )
+        md-list(flex="100" layout="row" layout-wrap)
+          md-list-item.md-2-line(flex="100" ng-repeat="c in comments" )
+          
+            img.md-avatar(ng-src='{{c.photo}}', alt='')
+            .md-list-item-text(ng-class="{'md-offset': 5 }")
+              h3 {{ c.displayName }}
+              p {{c.comment}}
+            md-button.md-secondary.md-icon-button(ng-click="toggleCommentLike(c)", aria-label='like')
+              i.material-icons( ng-class="{'liked': c.likes[auth.uid]}") favorite
+
+          //- md-list-item.md-3-line.md-long-text(flex="100" ng-repeat="c in comments" )
+          //-   img.md-avatar(ng-src='{{c.photo}}', alt='')
+          //-   .md-list-item-text
+          //-     h3 {{ c.displayName }}
+          //-     p {{c.comment}}
+          //-   div(flex="100" layout="row" layout-align="space-around center")
+          //-     div(flex="80" layout="row" layout-align="center center" )
+          //-       p.noto.nom(flex="none" ng-show="c.likes[auth.uid]") You like this
+          //-     div(flex="20" layout="row" layout-align="center center" ng-click="toggleCommentLike(c)")
+          //-       i.material-icons( ng-class="{'liked': c.likes[auth.uid]}") favorite
+      div(flex="100" layout="row" )
+        div(flex="100" layout="row" ng-if="auth" layout-wrap layout-align="center center")
+          md-input-container(flex="80")
+            label Comment
+            textarea(rows="6" ng-model="newComment.comment")
+          div(flex="100" layout="row" layout-wrap layout-align="center center")
+            md-button(ng-click="addComment()") Add Comment
+        div(flex="100" layout="row" ng-if="!auth" layout-wrap)
+          div(flex="100" layout="row" layout-align="center center")
+            h2(flex="none") Please sign in to comment
+          div(flex="100" layout="row" layout-align="center center")
+            div.mc(flex="100" flex-gt-sm="45"   layout="row" layout-align="center")
+              div.google(flex="80" ng-click="signIn('google')")
+            div.mc(flex="100" flex-gt-sm="45"  layout="row" layout-align="center")
+              div.facebook(flex="80" ng-click="signIn('facebook')")

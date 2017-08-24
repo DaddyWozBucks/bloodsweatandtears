@@ -1,0 +1,52 @@
+div(flex="100" layout="row" layout-wrap layout-align="center start")
+  div(flex="100" flex-gt-sm="50" layout="row" layout-wrap layout-align="center start")
+    div(flex="100" layout="row" layout-wrap layout-align="center center")
+      md-input-container(flex="80")
+        label Title
+        input(type="text" ng-model="newPost.title")
+    div(flex="100" layout="row" layout-wrap layout-align="center center")
+      //- div(ngf-select="uploadBanner($file)")
+      div(flex="100" layout="row" layout-wrap layout-align="center center")
+        md-input-container(flex="80")
+          label Banner URL
+          input(type="text" ng-model="newPost.banner")
+        //- md-button(ng-click="addBanner(newPostImg)") Image
+    div(flex="100" layout="row" layout-wrap layout-align="center center")
+      md-input-container(flex="80")
+        label Post
+        textarea(rows="6" ng-model="newData.paragraph")
+      div(flex="100" layout="row" layout-wrap layout-align="center center")
+        md-button(ng-click="addParagraph()") Add Paragraph
+      div(flex="100" layout="row" layout-wrap layout-align="center center")
+        div(flex="100" layout="row" layout-wrap layout-align="center center")
+          md-input-container(flex="80")
+            label Image URL
+            input(type="text" ng-model="newData.image")
+          md-button(ng-click="addImage()") Image
+        div(flex="100" layout="row" layout-wrap layout-align="center center")
+          md-input-container(flex="80")
+            label Quote
+            input(type="text" ng-model="newData.quote")
+          md-button(ng-click="addQuote()") Quote
+        div(flex="100" layout="row" layout-wrap layout-align="center center")
+          md-input-container(flex="80")
+            label Youtube Code
+            input(type="text" ng-model="newData.youtube")
+          md-button(ng-click="addYoutube()") Set 
+    div(flex="100" layout="row" layout-wrap layout-align="center center")
+      md-button(ng-click="addPost()") Save
+  div(flex="100" flex-gt-sm="50" layout="row" layout-wrap layout-align="center start")
+    div.post(flex="100" layout="row" layout-wrap layout-align="center start" )
+      div.post_banner(flex="none" layout="row" layout-align="center center" ng-style="{'background-image': 'url(' + newPost.banner + ')'}")
+        h1.post_title(flex="none") {{newPost.title}}
+      div(flex="100" layout="row" layout-wrap layout-align="center start" )
+        div(flex="100" layout="row" layout-wrap layout-align="center start" ng-repeat="p in newPost.body")
+          div(flex="100" layout="row" layout-wrap layout-align="center start" ng-if="p.type == 'text'")
+            p.post_title(flex="100" flex-gt-sm="90" ) {{p.text}}
+          div.post_img(flex="100" layout="row" layout-wrap layout-align="center start" ng-if="p.type == 'image'" ng-style="{'background-image': 'url(' + p.image + ')'}") 
+          div.post_quote(flex="100" layout="row" layout-wrap layout-align="center start" ng-if="p.type == 'quote'" ) 
+            blockquote(flex="none") {{p.text}}
+          div.post_youtube(flex="100" layout="row" layout-wrap layout-align="center center" ng-if="p.type == 'youtube'" )
+            iframe(id="ytplayer" type="text/html" width="100%" height="100%"
+              src="{{youtubeUrl(p.url)}}"
+              frameborder="0")

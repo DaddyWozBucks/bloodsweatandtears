@@ -1,0 +1,75 @@
+
+<div flex="100" layout="row" layout-wrap="layout-wrap" layout-align="center start">
+  <div flex="100" flex-gt-sm="50" layout="row" layout-wrap="layout-wrap" layout-align="center start">
+    <div flex="100" layout="row" layout-wrap="layout-wrap" layout-align="center center">
+      <md-input-container flex="80">
+        <label>Title</label>
+        <input type="text" ng-model="newPost.title"/>
+      </md-input-container>
+    </div>
+    <div flex="100" layout="row" layout-wrap="layout-wrap" layout-align="center center">
+      <div flex="100" layout="row" layout-wrap="layout-wrap" layout-align="center center">
+        <md-input-container flex="80">
+          <label>Banner URL</label>
+          <input type="text" ng-model="newPost.banner"/>
+        </md-input-container>
+      </div>
+    </div>
+    <div flex="100" layout="row" layout-wrap="layout-wrap" layout-align="center center">
+      <md-input-container flex="80">
+        <label>Post</label>
+        <textarea rows="6" ng-model="newData.paragraph"></textarea>
+      </md-input-container>
+      <div flex="100" layout="row" layout-wrap="layout-wrap" layout-align="center center">
+        <md-button ng-click="addParagraph()">Add Paragraph</md-button>
+      </div>
+      <div flex="100" layout="row" layout-wrap="layout-wrap" layout-align="center center">
+        <div flex="100" layout="row" layout-wrap="layout-wrap" layout-align="center center">
+          <md-input-container flex="80">
+            <label>Image URL</label>
+            <input type="text" ng-model="newData.image"/>
+          </md-input-container>
+          <md-button ng-click="addImage()">Image</md-button>
+        </div>
+        <div flex="100" layout="row" layout-wrap="layout-wrap" layout-align="center center">
+          <md-input-container flex="80">
+            <label>Quote</label>
+            <input type="text" ng-model="newData.quote"/>
+          </md-input-container>
+          <md-button ng-click="addQuote()">Quote</md-button>
+        </div>
+        <div flex="100" layout="row" layout-wrap="layout-wrap" layout-align="center center">
+          <md-input-container flex="80">
+            <label>Youtube Code</label>
+            <input type="text" ng-model="newData.youtube"/>
+          </md-input-container>
+          <md-button ng-click="addYoutube()">Set </md-button>
+        </div>
+      </div>
+    </div>
+    <div flex="100" layout="row" layout-wrap="layout-wrap" layout-align="center center">
+      <md-button ng-click="addPost()">Save</md-button>
+    </div>
+  </div>
+  <div flex="100" flex-gt-sm="50" layout="row" layout-wrap="layout-wrap" layout-align="center start">
+    <div flex="100" layout="row" layout-wrap="layout-wrap" layout-align="center start" class="post">
+      <div flex="none" layout="row" layout-align="center center" ng-style="{'background-image': 'url(' + newPost.banner + ')'}" class="post_banner">
+        <h1 flex="none" class="post_title">{{newPost.title}}</h1>
+      </div>
+      <div flex="100" layout="row" layout-wrap="layout-wrap" layout-align="center start">
+        <div flex="100" layout="row" layout-wrap="layout-wrap" layout-align="center start" ng-repeat="p in newPost.body">
+          <div flex="100" layout="row" layout-wrap="layout-wrap" layout-align="center start" ng-if="p.type == 'text'">
+            <p flex="100" flex-gt-sm="90" class="post_title">{{p.text}}</p>
+          </div>
+          <div flex="100" layout="row" layout-wrap="layout-wrap" layout-align="center start" ng-if="p.type == 'image'" ng-style="{'background-image': 'url(' + p.image + ')'}" class="post_img"> </div>
+          <div flex="100" layout="row" layout-wrap="layout-wrap" layout-align="center start" ng-if="p.type == 'quote'" class="post_quote"> 
+            <blockquote flex="none">{{p.text}}</blockquote>
+          </div>
+          <div flex="100" layout="row" layout-wrap="layout-wrap" layout-align="center center" ng-if="p.type == 'youtube'" class="post_youtube">
+            <iframe id="ytplayer" type="text/html" width="100%" height="100%" src="{{youtubeUrl(p.url)}}" frameborder="0"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+
+<div flex="100" layout="row" layout-wrap="layout-wrap" layout-align="center start">
+  <div flex="100" flex-gt-sm="75" layout="row" layout-wrap="layout-wrap" layout-align="center start">
+    <div md-whiteframe="3" flex="90" layout="row" layout-wrap="layout-wrap" layout-align="center start" ng-repeat="post in posts" class="post">
+      <div flex="none" layout="column" ng-style="{'background-image': 'url(' + post.banner + ')'}" ng-mouseenter="hoverObj[post.$id] = !hoverObj[post.$id]" ng-mouseleave="hoverObj[post.$id] = !hoverObj[post.$id]" class="post_banner">
+        <div flex="60" layout="row" layout-align="center center" ng-show="!hoverObj[post.$id]" class="post_title">
+          <h1 flex="none" class="racing">{{post.title}}</h1>
+        </div>
+        <div flex="40" layout="row" layout-align="center end" ng-show="!hoverObj[post.$id]" class="post_snippet">
+          <div flex="20" layout="row" layout-align="center center">
+            <h4 flex="none" ui-sref="app.post({id: post.$id})" class="ps2p hvr-pulse-grow">Read</h4>
+          </div>
+        </div>
+        <div flex="none" layout="column" layout-align="start center" ng-show="hoverObj[post.$id]" class="hover_preview">
+          <h1 flex="15" class="racing center">{{post.title}}</h1>
+          <div flex="85" layout="row" layout-align="none start" class="preview_snippet">
+            <p flex="70" flex-offset="15">{{post.body[0].text | limitTo:250}}</p>
+            <div flex="15" layout="row" layout-align="center end" class="preview_btn">
+              <h4 flex="none" ui-sref="app.post({id: post.$id})" class="ps2p hvr-pulse-grow">Read</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div flex="100" flex-gt-sm="25" layout="row" layout-wrap="layout-wrap" layout-align="center start">
+    <div flex="100" layout="row" layout-wrap="layout-wrap" layout-align="center start" class="twitter"><a href="https://twitter.com/capeverne" class="twitter-timeline">Tweets by capeverne</a></div>
+  </div>
+</div>
